@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 // basic generator
 
 let generator = function *() {
@@ -5,16 +7,26 @@ let generator = function *() {
   let two = yield 2
   console.log('one:', one, 'two: ', two)
 }
+// store generator() as myGen
+let myGen = generator()
 
-let myGen = generator()              // store generator() as myGen
+console.log('first call: ', myGen.next())
+console.log('second call: ', myGen.next('Hello'))
+console.log('third call: ', myGen.next('World!'))
+console.log('fourth call: ', myGen.next('sriracha'))
+console.log('last call: ', myGen.next())
 
-console.log(myGen.next())            // { value: 1, done: false }
-console.log(myGen.next('Hello'))     // { value: 2, done: false }
-console.log(myGen.next('World!'))    // one: Hello two:  World! // { value: undefined, done: true }
-console.log(myGen.next('sriracha'))  // { value: undefined, done: true }
-console.log(myGen.next())            // { value: undefined, done: true }
 
-// simple async using promises
+
+
+
+
+
+
+
+
+
+// // simple async using promises
 
 let fetch = require('node-fetch');  // promise based API
 let co = require('co');             // generator library
@@ -23,6 +35,21 @@ fetch('http://jsonplaceholder.typicode.com/users')
   .then(response => response.json())
   .then(users => users.map(user => user.username))
   .then(usernames => console.log(usernames))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // simple async using co generator library
 
@@ -36,7 +63,6 @@ co(function *() {
 
 // promises: get users, photos, and posts
 
-// get users
 let getUsers = 'http://jsonplaceholder.typicode.com/users'
 let getPhotos = 'http://jsonplaceholder.typicode.com/photos'
 let getPosts = 'http://jsonplaceholder.typicode.com/posts'
@@ -46,13 +72,11 @@ fetch(getUsers)
   .then(users => users.map(user => user.username))
   .then(usernames => console.log(usernames))
 
-// get photos
 fetch(getPhotos)
   .then(response => response.json())
   .then(photos => photos.map(photo => photo.url))
   .then(photoUrls => console.log(photoUrls))
 
-// get posts
 fetch(getPosts)
   .then(response => response.json())
   .then(posts => posts.map(post => post.title))

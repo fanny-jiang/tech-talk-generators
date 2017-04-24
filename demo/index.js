@@ -1,15 +1,22 @@
 /* eslint-disable */
 
+let myGen = function* () {
+  let one = yield 1
+  let two = yield 2
+}
+
+
+
+
 let fetch = require('node-fetch'); // promise based API
 let co = require('co'); // generator library
 
 // basic generator
 
-// let myGen = function* () {
-//   let one = yield 1
-//   let two = yield 2
-//   console.log('one:', one, 'two: ', two);
-// }
+
+
+
+
 
 // let generator = myGen(); // run the generator stored as generator
 
