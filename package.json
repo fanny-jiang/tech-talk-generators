@@ -1,0 +1,23 @@
+{
+  "name": "tech-talk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fanny-jiang/tech-talk-generators.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fanny-jiang/tech-talk-generators/issues"
+  },
+  "homepage": "https://github.com/fanny-jiang/tech-talk-generators#readme",
+  "dependencies": {
+    "co": "^4.6.0",
+    "node-fetch": "^1.6.3"
+  }
+}
