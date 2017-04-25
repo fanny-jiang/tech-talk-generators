@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/fanny-jiang/tech-talk-generators#readme",
   "dependencies": {
+    "bluebird": "^3.5.0",
     "co": "^4.6.0",
     "node-fetch": "^1.6.3"
   }

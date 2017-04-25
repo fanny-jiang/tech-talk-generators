@@ -1,3 +1,5 @@
+const Promise = require('bluebird')
+
 function *firstGen() {
   console.log(yield Promise.resolve('hello'))
   console.log(yield {hello: Promise.resolve(1), world: Promise.resolve(2)})
