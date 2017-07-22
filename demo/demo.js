@@ -1,37 +1,36 @@
 /*eslint-disable*/
 
-// Example:  make asynchronous request to create new instances in database
-
-// database models
+// Example:  make asynchronous requests to create new instances in database
+const co = require('co')
 const User = require('User')
-const Thing = require('Thing')
+const Hobby = require('Hobby')
 
-// with promises only
+/* <------------ with promises only -----------------> */
 
-function makeFavorites() {
+function makeHobbies() {
   // creating new instances in db return promises
-  const ashi = User.create({name: 'ashi'}),
-        apple = Thing.create({name: 'apple'}),
-        banana = Thing.create({name: 'banana'})
+  const jessDay = User.create({firstName: 'Jess', lastName: 'Day'}),
+        crafting = Hobby.create({name: 'crafting'}),
+        singing = Hobby.create({name: 'singing'})
 
-  // resolve all the above promises with a Promise.all which will then return an array of promises of these instances
-  return Promise.all([ashi, apple, banana])
-    .then(([ashi, apple, banana]) => {
-      // another Promise.all to resolve instance methods to add favorites to the user
+  return Promise.all([jessDay, crafting, singing])
+    .then(([jessDay, crafting, singing]) => {
       return Promise.all([
-        ashi.addFavorite(apple),
-        ashi.addFavorite(banana)
+        jessDay.addHobby(crafting),
+        jessDay.addHobby(singing)
       ])
     })
 }
 
-// with generator
+/* <--------------- with generator ------------------> */
 
-function *makeFavs() {
-  const ashi = yield User.create({name: 'ashi'}),
-        apple = yield Thing.create({name: 'apple'}),
-        banana = yield Thing.create({name: 'banana'})
+co(function *makeHobbs() {
+  const jessDay = yield User.create({firstName: 'Jess', lastName: 'Day'}),
+        crafting = yield Hobby.create({name: 'crafting'}),
+        singing = yield Hobby.create({name: 'singing'})
 
-  ashi.addFavorite(yield apple)
-  ashi.addFavorite(yield banana)
-}
+  jessDay.addHobby(yield crafting)
+  jessDay.addHobby(yield singing)
+})
+
+
