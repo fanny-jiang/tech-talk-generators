@@ -2,8 +2,8 @@
 
 // Example:  make asynchronous requests to create new instances in database
 const co = require('co')
-const User = require('User')
-const Hobby = require('Hobby')
+const User = require('../db/User')
+const Hobby = require('../db/Hobby')
 
 /* <------------ with promises only -----------------> */
 
